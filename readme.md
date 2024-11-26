@@ -57,3 +57,14 @@ Example:
 # Further improvements
 - If I were to do further improvements, I would make sure that When and Then are always provided
 - The current validation is very basic, I would improve the validation and it would actually separate the features and scenarios and then iterate over each one of them, just to add granularity to the validation.
+
+# How to start the app
+- install packages: `pip install -r packages.txt`
+- All you need to run is `python app.py`
+
+# How to use:
+- Let's use Postman for the sake of this little project
+    - Let's create a POST request 
+    - Once you run the project, the URL should be http://{url}/parse, in my case `http://127.0.0.1:5000/parse`
+    - All we need to do is go to `Body` => `form-data` => In the first row, in the key section, select `file`, in `value` import the file and hit `Send`
+    - There's also an example file called `test.txt` which you can use as it has a few examples in it.
