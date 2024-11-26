@@ -57,6 +57,8 @@ Example:
 # Further improvements
 - If I were to do further improvements, I would make sure that When and Then are always provided
 - The current validation is very basic, I would improve the validation and it would actually separate the features and scenarios and then iterate over each one of them, just to add granularity to the validation.
+- Add support for more complex Gherkin inputs
+- Integrate with other systems such as jira / azure devops and so on if needed, to create tickets and push requirements.
 
 # How to start the app
 - install packages: `pip install -r packages.txt`

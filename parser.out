@@ -1,1 +1,37 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    FEATURE
+    SCENARIO
+
+Grammar
+
+Rule 0     S' -> features
+Rule 1     features -> features feature
+Rule 2     features -> feature
+Rule 3     steps -> steps step
+Rule 4     steps -> step
+Rule 5     step -> GIVEN TEXT
+Rule 6     step -> WHEN TEXT
+Rule 7     step -> THEN TEXT
+Rule 8     step -> AND TEXT
+
+Terminals, with rules where they appear
+
+AND                  : 8
+FEATURE              : 
+GIVEN                : 5
+SCENARIO             : 
+TEXT                 : 5 6 7 8
+THEN                 : 7
+WHEN                 : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+feature              : 1 2
+features             : 1 0
+step                 : 3 4
+steps                : 3
+

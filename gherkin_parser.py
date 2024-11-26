@@ -36,7 +36,7 @@ class GherkinParser:
         '''scenario : SCENARIO TEXT steps'''
         p[0] = {
             "Scenario": p[2].strip(),
-            "Steps": p[3]
+            "Steps": self._format_steps(p[3])
         }
 
     def p_steps(self, p):
@@ -52,7 +52,20 @@ class GherkinParser:
                 | WHEN TEXT
                 | THEN TEXT
                 | AND TEXT'''
-        p[0] = {p[1]: p[2].strip()}
+        p[0] = {p[1].strip(): p[2].strip()}
+
+    def _format_steps(self, steps):
+        # Reorganise steps
+        step_dict = {"GIVEN": [], "WHEN": [], "THEN": [], "AND": []}
+        for step in steps:
+            for key in step:
+                step_dict[key.upper()].append(step[key])
+
+        # Flatten and return steps in the correct order
+        ordered_steps = []
+        for key in ["GIVEN", "WHEN", "THEN", "AND"]:
+            ordered_steps.extend([{key.capitalize(): text} for text in step_dict[key]])
+        return ordered_steps
 
     def p_error(self, p):
         if p:
@@ -61,7 +74,6 @@ class GherkinParser:
             raise SyntaxError("Syntax error: Unexpected end of input")
 
     def build(self, **kwargs):
-        """Build the parser."""
         self.parser = yacc.yacc(module=self, **kwargs)
 
     def parse(self, data):
